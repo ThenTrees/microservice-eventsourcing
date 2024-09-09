@@ -1,0 +1,11 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discoverserver
+
+eureka:
+  client:
+    register-with-eureka: false # boi vi day la 1 server nen nos khong can dang ki voi chinh no
+    fetch-registry: false # khong can lay danh sach client
