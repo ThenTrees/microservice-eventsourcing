@@ -4,6 +4,7 @@ import com.thentrees.bookservice.command.command.CreateBookCommand;
 import com.thentrees.bookservice.command.command.DeleteBookCommand;
 import com.thentrees.bookservice.command.command.UpdateBookCommand;
 import com.thentrees.bookservice.command.model.BookRequestModel;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class BookCommandController {
     private final CommandGateway commandGateway;
 
     @PostMapping
-    public ResponseEntity<String> addBook(@RequestBody BookRequestModel bookRequestModel) {
+    public ResponseEntity<String> addBook(@Valid @RequestBody BookRequestModel bookRequestModel) {
         CreateBookCommand command = CreateBookCommand.builder()
                                                     .id(UUID.randomUUID().toString())
                                                     .name(bookRequestModel.getName())
